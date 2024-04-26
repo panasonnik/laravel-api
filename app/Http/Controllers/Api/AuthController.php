@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Auth as AuthRequests;
 
 class AuthController extends Controller

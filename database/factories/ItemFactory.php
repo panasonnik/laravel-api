@@ -20,7 +20,7 @@ class ItemFactory extends Factory
         $categories = Category::pluck('id')->toArray();
         return [
             'category_id'=> $this->faker->randomElement($categories),
-            'title' => $this->faker->word,
+            'title' => $this->faker->company,
             'description' => $this->faker->realText(rand(20,200)),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000),
         ];

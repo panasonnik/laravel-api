@@ -15,8 +15,7 @@ Route::prefix('/auth')->name('auth.')->controller(Controllers\Api\AuthController
     
 Route::prefix('/users')->name('users.')->middleware('auth:api')->controller(Controllers\UserController::class)->group(function() {
     Route::get('/me','getCurrentUser')->name('me');
-    Route::get('/items','getUserItems')->name('items');
-
+    Route::get('/{id}/items','getUserItems')->name('items');
 });
 
 Route::prefix('/categories')->name('categories.')->controller(Controllers\CategoryController::class)->group(function() {

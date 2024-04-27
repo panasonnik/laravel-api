@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources as Resources;;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -29,7 +30,10 @@ class CategoryController extends Controller
     
         return response()->json([
             'success' => true,
-            'data' => [$category, $category->items]
+            'data' => [
+                'category'=> new Resources\CategoryResource($category), 
+                'items'=>Resources\ItemResource::collection($category->items)
+            ]
             
         ]);
     }

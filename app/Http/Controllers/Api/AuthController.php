@@ -44,7 +44,7 @@ class AuthController extends Controller
                 'data'=>'User does not exist'
             ], 400);
         }
-        if(Hash::check($request->password, $user->password)) {
+        if(!Hash::check($request->password, $user->password)) {
             return response()->json([
                 'success'=>false,
                 'data'=>'Passwords do not match'

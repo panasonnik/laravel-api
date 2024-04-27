@@ -4,9 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\Item;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Item>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<Item>
  */
 class ItemFactory extends Factory
 {
@@ -19,7 +21,7 @@ class ItemFactory extends Factory
     {
         $categories = Category::pluck('id')->toArray();
         return [
-            'category_id'=> $this->faker->randomElement($categories),
+            'category_id' => $this->faker->randomElement($categories),
             'title' => $this->faker->company,
             'description' => $this->faker->realText(rand(20,200)),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000),

@@ -8,9 +8,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Auth as AuthRequests;
 
+
 class AuthController extends Controller
 {
-    public function register(Request $request) 
+    public function register(AuthRequests\ReqisterRequest $request) 
     {
        $isUserExists = User::where('email',$request->email)->exists();
 
@@ -36,7 +37,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(Request $request) {
+    public function login(AuthRequests\LoginRequest $request) {
         $user=User::where('email', $request->email)->first();
         if(!$user) {
             return response()->json([
